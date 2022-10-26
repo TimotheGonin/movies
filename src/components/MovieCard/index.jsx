@@ -1,11 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 
+/* 
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ JSX                                                                     │
+  └─────────────────────────────────────────────────────────────────────────┘
+ */
 const MovieCard = () => {
 	return (
-		<article>
+		<MovieCardContainer>
 			<img src="" alt="" />
 			<h3>Movie name</h3>
-			<ul>
+			<MoreInfo>
 				<li>
 					<p>Année</p>
 					<span>2022</span>
@@ -18,9 +24,26 @@ const MovieCard = () => {
 					<p>Réalisateur</p>
 					<span>Bilbo</span>
 				</li>
-			</ul>
-		</article>
+			</MoreInfo>
+		</MovieCardContainer>
 	);
 };
+
+/* 
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ STYLES                                                                  │
+  └─────────────────────────────────────────────────────────────────────────┘
+ */
+const MovieCardContainer = styled.article`
+	background-color: grey;
+	max-width: 200px;
+	max-height: 300px;
+`;
+
+const MoreInfo = styled.ul`
+	list-style-type: none;
+	display: flex;
+	justify-content: center;
+`;
 
 export default MovieCard;

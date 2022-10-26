@@ -1,6 +1,12 @@
 import React from "react";
+// import styled from "styled-components";
 import MovieCard from "../../components/MovieCard";
 
+/* 
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ JSX                                                                     │
+  └─────────────────────────────────────────────────────────────────────────┘
+ */
 const MovieCards = () => {
 	return (
 		<section>
@@ -16,5 +22,11 @@ const MovieCards = () => {
 		</section>
 	);
 };
+
+/* 
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │ STYLES                                                                  │
+  └─────────────────────────────────────────────────────────────────────────┘
+ */
 
 export default MovieCards;
