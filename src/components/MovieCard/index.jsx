@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import TEMPIMG from "../../assets/logo192.png";
+import STARICON from "../../assets/icons/star.svg";
+import STARICONFILL from "../../assets/icons/star-fill.svg";
 
 /* 
   ┌─────────────────────────────────────────────────────────────────────────┐
@@ -7,9 +10,12 @@ import styled from "styled-components";
   └─────────────────────────────────────────────────────────────────────────┘
  */
 const MovieCard = () => {
+	const [liked, SetLiked] = useState(false);
+	const favoriteIcon = liked ? STARICONFILL : STARICON;
+
 	return (
 		<MovieCardContainer>
-			<img src="" alt="" />
+			<img src={TEMPIMG} alt="" />
 			<h3>Movie name</h3>
 			<MoreInfo>
 				<li>
@@ -25,6 +31,9 @@ const MovieCard = () => {
 					<span>Bilbo</span>
 				</li>
 			</MoreInfo>
+			<Favorite>
+				<img src={favoriteIcon} alt="" />
+			</Favorite>
 		</MovieCardContainer>
 	);
 };
@@ -44,6 +53,11 @@ const MoreInfo = styled.ul`
 	list-style-type: none;
 	display: flex;
 	justify-content: center;
+`;
+
+const Favorite = styled.span`
+	display: flex;
+	justify-content: flex-end;
 `;
 
 export default MovieCard;
