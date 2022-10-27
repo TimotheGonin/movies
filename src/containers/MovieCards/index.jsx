@@ -36,6 +36,7 @@ const MovieCards = () => {
 					<MovieCard
 						key={`${movie.id}-${movie.title}`}
 						title={movie.title}
+						link={`/movieInfo/${movie.title}`}
 					></MovieCard>
 				))}
 			</MovieCardsCollection>
