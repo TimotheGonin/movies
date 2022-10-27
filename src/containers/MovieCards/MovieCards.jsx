@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import MovieCard from "../../components/MovieCard";
 
@@ -8,18 +8,38 @@ import MovieCard from "../../components/MovieCard";
   └─────────────────────────────────────────────────────────────────────────┘
  */
 const MovieCards = () => {
-	return (
-		<section>
+	const [moviesData, setMoviesData] = useState([]);
+	const [moviesDataLoading, setMoviesDataLoading] = useState(true);
+	const API_URL = "https://swapi.dev/api/films";
+
+	useEffect(() => {
+		async function fetchMoviesData() {
+			try {
+				const response = await fetch(API_URL);
+				const resultData = await response.json();
+				setMoviesData(resultData.results);
+				setMoviesDataLoading(false);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		fetchMoviesData();
+	}, []);
+
+	return moviesDataLoading ? (
+		<p>Loading...</p>
+	) : (
+		<MovieCardsWrapper>
 			<h2>Résultat de recherche</h2>
 			<MovieCardsCollection>
-				<MovieCard />
-				<MovieCard />
-				<MovieCard />
-				<MovieCard />
-				<MovieCard />
-				<MovieCard />
+				{moviesData.map((movie) => (
+					<MovieCard
+						key={`${movie.id}-${movie.title}`}
+						title={movie.title}
+					></MovieCard>
+				))}
 			</MovieCardsCollection>
-		</section>
+		</MovieCardsWrapper>
 	);
 };
 
@@ -28,12 +48,15 @@ const MovieCards = () => {
   │ STYLES                                                                  │
   └─────────────────────────────────────────────────────────────────────────┘
  */
+const MovieCardsWrapper = styled.section`
+	display: flex;
+	flex-direction: column;
+`;
+
 const MovieCardsCollection = styled.div`
-	display: grid;
-	grid-template-columns: repeat(auto-fill, 20rem);
+	display: flex;
 	justify-content: space-evenly;
-	row-gap: 5.6rem;
-	column-gap: 1rem;
+	flex-wrap: wrap;
 `;
 
 export default MovieCards;
