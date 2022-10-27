@@ -13,6 +13,12 @@ const GlobalStyle = createGlobalStyle`
 .App {
   min-height: 100vh;
   height: 100vh;
+  max-width: 100vh;
+}
+
+#root{
+  display: flex;
+  justify-content: center;
 }
 `;
 

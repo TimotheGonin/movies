@@ -1,39 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import TEMPIMG from "../../assets/logo192.png";
-import STARICON from "../../assets/icons/star.svg";
-import STARICONFILL from "../../assets/icons/star-fill.svg";
-
 /* 
   ┌─────────────────────────────────────────────────────────────────────────┐
   │ JSX                                                                     │
   └─────────────────────────────────────────────────────────────────────────┘
  */
-const MovieCard = () => {
-	const [liked, SetLiked] = useState(false);
-	const favoriteIcon = liked ? STARICONFILL : STARICON;
-
+const MovieCard = ({ title }) => {
 	return (
 		<MovieCardContainer>
 			<img src={TEMPIMG} alt="" />
-			<h3>Movie name</h3>
-			<MoreInfo>
-				<li>
-					<p>Année</p>
-					<span>2022</span>
-				</li>
-				<li>
-					<p>Durée</p>
-					<span>1h30</span>
-				</li>
-				<li>
-					<p>Réalisateur</p>
-					<span>Bilbo</span>
-				</li>
-			</MoreInfo>
-			<Favorite>
-				<img src={favoriteIcon} alt="" />
-			</Favorite>
+			<h3>{title}</h3>
+			<MoreInfo>More infos</MoreInfo>
 		</MovieCardContainer>
 	);
 };
@@ -49,15 +27,10 @@ const MovieCardContainer = styled.article`
 	max-height: 300px;
 `;
 
-const MoreInfo = styled.ul`
-	list-style-type: none;
-	display: flex;
-	justify-content: center;
-`;
-
-const Favorite = styled.span`
-	display: flex;
-	justify-content: flex-end;
+const MoreInfo = styled.button`
+	:hover {
+		cursor: pointer;
+	}
 `;
 
 export default MovieCard;
